@@ -24,11 +24,11 @@ var gifs =['Derek Jeter']
 
  function displayGif(){
 
-		
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=jeter&api_key=dc6zaTOxFJmzC";
+		var gif = $(this).attr('data-name');
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +gif + "&api_key=dc6zaTOxFJmzC";
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
-			console.log(response);
+			// console.log(response);
 			var gifDiv =$('<div class ="gif">');
 
 			var rating = response.rating;
@@ -54,7 +54,7 @@ function renderButtons(){
 			
 		    var a = $('<button>') 
 		    a.addClass('gif'); 
-		    a.attr('data-name', gifs[i]);  data-attribute
+		    a.attr('data-name', gifs[i]);  
 		    a.text(gifs[i]); 
 		    $('#gifViews').append(a); 
 		}
