@@ -2,57 +2,60 @@
 <html>
 <head>
 	<title>Gify App!</title>
+	<link rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 </head>
 <body>
 	<div class= "container">
 		<h1>Amazing Gifs</h1>
-		<div id = "gifList"></div>
-		<form id= "gifForm">
+		<div id="gifViews"></div>
+		<form id= "gifForm" class="form-group has-success">
 			<label for="gif-input">Add a Sports Gif Bro</label>
 			<input type="text" id="gif-input">
 			<br>
 			<br>
-			<input id="addGif" type="submit" value="Add a Sports Gif Bro">
+			<input id="addGif" type="submit" value="Submit">
 		</form>
-		<div id="gifViews"></div>
+		<div id = "gifList"></div>
 	</div>
 
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
 <script type="text/javascript">
 	
-var gifs =['Derek Jeter']
+var gifs =['Derek Jeter', 'Michael Jordan', 'Pete Rose', 'Tiger Woods', 'Bo Jackson', 'Wayne Gretzky', 'Baseball', 'football', 'Soccer', "Basketball", 'Hockey', 'ESPN', 'Tennis']
 
  function displayGif(){
-
+ 		$('#gifList').empty();
 		var gif = $(this).attr('data-name');
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +gif + "&api_key=dc6zaTOxFJmzC";
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +gif +"&api_key=dc6zaTOxFJmzC";
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
-			// console.log(response);
-			var gifDiv =$('<div class ="gif">');
+			console.log(response.data);
 
-			var rating = response.rating;
+				var myGiphyArray = response.data;
+	       		$.each(myGiphyArray.slice(0,10), function(index, value){
+	       			
+	        		var embedUrl = value.images.original.url;
+	        		var stillUrl = value.images.original_still.url;
+	        		var animatedUrl = value.images.original.url;
+	        		newImage = $('<img>');
+	        		newImage.attr('src', embedUrl);
+	        		newImage.attr('data-still', stillUrl)
+	        		newImage.attr('data-animated', animatedUrl)
+	        		$('#gifList').prepend(newImage);
 
-			var pOne = $('<p>').text("Rating: " + rating);
-
-			gifDiv.append(pOne);
-
-			var embedUrl = response.embed_url;
-        	newImage = $('<img>');
-        	newImage.attr('src', embedUrl);
-			gifDiv.append(newImage);
-
-			$('#gifViews').prepend(gifDiv);
-
+	        			
+	        	});
 		});
+		
 	}
 function renderButtons(){ 
 		
 		$('#gifViews').empty();
-		
 		for (var i = 0; i < gifs.length; i++){
 			
-		    var a = $('<button>') 
+		    var a = $('<button class="btn btn-success">') 
 		    a.addClass('gif'); 
 		    a.attr('data-name', gifs[i]);  
 		    a.text(gifs[i]); 
@@ -60,15 +63,11 @@ function renderButtons(){
 		}
 	}
 
-$('#addMovie').on('click', function(){
+$('#addGif').on('click', function(){
 		
 		var gif = $('#gif-input').val().trim();
-		
 		gifs.push(gif);
-		
-		
 		renderButtons();
-		
 		return false;
 	})
 
