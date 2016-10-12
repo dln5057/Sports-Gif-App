@@ -1,4 +1,6 @@
 var gifs =['Derek Jeter', 'Michael Jordan', 'Pete Rose', 'Tiger Woods', 'Bo Jackson', 'Wayne Gretzky', 'Baseball', 'football', 'Soccer', "Basketball", 'Hockey', 'ESPN', 'Tennis']
+//defining var i add a unique id to each gif
+var i=0
 
 function displayGif(){
   $('#gifList').empty();
@@ -12,6 +14,12 @@ function displayGif(){
       var stillUrl = value.images.original_still.url;
       var animatedUrl = value.images.original.url;
       newImage = $('<img>');
+      //adds a class to each gif
+      newImage.attr('class', 'oneGif');
+      //adds a unique id to each gif
+      newImage.attr('id', i);
+      i++
+
       newImage.attr('src', embedUrl);
       newImage.attr('data-still', stillUrl)
       newImage.attr('data-animated', animatedUrl)
@@ -40,3 +48,17 @@ $('#addGif').on('click', function(){
 $(document).on('click', '.gif', displayGif);
   
   renderButtons();
+
+
+//when a gif is clicked this function runs:
+$(document).on('click', '.oneGif', function(){
+  //if src of clicked gif is data-animated
+  if(this.src === this.dataset.animated){
+    //change src to data-still:
+    $("#" + this.id).attr('src', this.dataset.still)
+  //else (if  src is data-still):
+  }else{
+    //change src to data-animated
+    $("#" + this.id).attr('src', this.dataset.animated)
+  }
+});
