@@ -14,6 +14,7 @@ function displayGif(){
       var stillUrl = value.images.original_still.url;
       var animatedUrl = value.images.original.url;
       newImage = $('<img>');
+      //adds a class to each gif
       newImage.attr('class', 'oneGif');
       //adds a unique id to each gif
       newImage.attr('id', i);
