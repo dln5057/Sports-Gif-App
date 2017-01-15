@@ -13,11 +13,11 @@ Link to the Sports Giphy App : [link](https://sportsgifapp.herokuapp.com/)
 ## Screenshots of the app functions
 
 ### Here shows what appears when app is first loaded. 
-![Main](images/Screenshot1.JPG)
+![Main](./assets/images/ScreenShot1.JPG)
 
 ### When you click on a button(in this instance, we clicked "Bo Jackson") and 10 giphys appear.
-![Action](assets/images/Screenshot2.JPG)
+![Action](./assets/images/ScreenShot2.JPG)
 
 ### After typing in a sports genre/person (here we typed "Bowling") a new button is added and clickable.
-![New Button](assets/images/ScreenShot3.JPG)
+![New Button](./assets/images/Screenshot3.JPG)
 
