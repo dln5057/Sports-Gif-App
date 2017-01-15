@@ -3,7 +3,7 @@ var gifs =['Derek Jeter', 'Michael Jordan', 'Pete Rose', 'Tiger Woods', 'Bo Jack
 function displayGif(){
   $('#gifList').empty();
   var gif = $(this).attr('data-name');
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +gif +"&api_key=dc6zaTOxFJmzC";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +gif +"&api_key=dc6zaTOxFJmzC";
   $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
     console.log(response.data);
     var myGiphyArray = response.data;
