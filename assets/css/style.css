@@ -24,3 +24,7 @@ label {
   h1, .h1 {
     color: #22b24c;
 }
+
+.header{
+      display: inline-flex;
+}
