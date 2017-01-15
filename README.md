@@ -1,14 +1,19 @@
 # SportsGiphyApp
 
+Link to the Sports Giphy App : [link](https://sportsgifapp.herokuapp.com/)
+
+***
+
 #### An array of sports and made buttons out of them. When you click on a button, you get 10 images from giphy and put them on the page. A search area allows you to type anything in sports related, and the button will be created to show the giphy.
+
+***
 
 ## Basic Functionality:
 * Used HTML and CSS for designing the application home page. 
 * Used Javascript for making AJAX calls with jQuery to the Giphy API using the function `displayGif()`.
 * Buttons are dynamically created with jQuery in the function `renderButtons()`.
 
-
-Link to the Sports Giphy App : [link](https://sportsgifapp.herokuapp.com/)
+***
 
 ## Screenshots of the app functions
 
